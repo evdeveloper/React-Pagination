@@ -1,0 +1,9 @@
+node_modules
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnail cache files
+._*
+Thumbs.db
