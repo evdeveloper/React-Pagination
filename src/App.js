@@ -25,12 +25,25 @@ function App() {
   const firstCountryPage = lastCountryPage - countryList;
   const currentCountry = country.slice(firstCountryPage, lastCountryPage);
 
+  const paginate = pageNumber => setCurrentPage(pageNumber)
+
+  const nextPage = () => setCurrentPage(prev => prev + 1)
+  const prevPage = () => setCurrentPage(prev => prev - 1)
+
   
   return (
     <div className='App mt-5'>
       <h1 className='text-primary mb-3 text-center'>Countries</h1>
-      <Countries countris={country} load={loading} />
-      <Pagination countryList={countryList} totalCountry={country.length} />
+      <Countries countris={currentCountry} load={loading} />
+      <div className='d-flex align-items-center justify-content-center'>
+        <button className='btn btn-primary' onClick={prevPage}>←</button>
+        <Pagination 
+        countryList={countryList} 
+        totalCountry={country.length} 
+        paginate={paginate}
+        />
+        <button className='btn btn-primary' onClick={nextPage}>→</button>
+      </div>
     </div>
   )
 }

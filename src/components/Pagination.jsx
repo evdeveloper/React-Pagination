@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pagination = ({countryList, totalCountry}) => {
+const Pagination = ({countryList, totalCountry, paginate}) => {
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil((totalCountry / countryList)); i++) {
@@ -9,11 +9,11 @@ const Pagination = ({countryList, totalCountry}) => {
 
   return (
     <div>
-      <ul className="pagination">
+      <ul className="pagination mb-0 ms-2 me-2">
         {
           pageNumbers.map(number => (
             <li className="page-item" key={number}>
-              <a href="!#" className="page-link">{number}</a>
+              <a href="!#" className="page-link" onClick={()=> paginate(number)}>{number}</a>
             </li>
           ))
         }
