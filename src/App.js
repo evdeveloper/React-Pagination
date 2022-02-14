@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import './App.css'
 import Countries from './components/Countries'
+import Pagination from './components/Pagination'
 
 
 function App() {
@@ -20,11 +21,16 @@ function App() {
     getCounries();
   },[]);
 
+  const lastCountryPage = currentPage * countryList;
+  const firstCountryPage = lastCountryPage - countryList;
+  const currentCountry = country.slice(firstCountryPage, lastCountryPage);
+
   
   return (
     <div className='App mt-5'>
       <h1 className='text-primary mb-3 text-center'>Countries</h1>
       <Countries countris={country} load={loading} />
+      <Pagination countryList={countryList} totalCountry={country.length} />
     </div>
   )
 }
